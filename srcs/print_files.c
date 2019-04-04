@@ -4,7 +4,7 @@ struct winsize	g_window_size;
 
 void	set_window_size(void)
 {
-	ioctl(STDOUT_FILENO, TIOCGWINSZ, &g_window_size);
+	ioctl(STDERR_FILENO, TIOCGWINSZ, &g_window_size);
 }
 
 int		get_max_strlen(char **array, int start, int end)
@@ -16,7 +16,7 @@ int		get_max_strlen(char **array, int start, int end)
 	max = 0;
 	while (++start < end && array[start])
 	{
-		len = strlen(array[start]);
+		len = ft_strlen(array[start]);
 		max = (len > max) ? (len) : (max);
 	}
 	return (max + 1);
@@ -50,14 +50,13 @@ void	print_filenames(t_files *files, int index, int nbr_cols)
 	max_strlen = get_max_strlen(files->files, 0, files->nbr_files);
 	while (files->files[++i])
 	{
-		ft_putstr_fd(NORM, STDOUT_FILENO);
-		(i == index) ? (ft_putstr_fd(US, STDOUT_FILENO)) : (0);
-		(files->selected[i] != -1) ? (ft_putstr_fd(SO, STDOUT_FILENO)) : (0);
+		ft_putstr_fd(NORM, STDERR_FILENO);
+		(i == index) ? (ft_putstr_fd(US, STDERR_FILENO)) : (0);
+		(files->selected[i] != -1) ? (ft_putstr_fd(SO, STDERR_FILENO)) : (0);
 		col = i % nbr_cols;
 		row = i / nbr_cols;
 		ft_putstr_fd(tgoto(CM, col * max_strlen, row), 0);
-		ft_putstr_fd(files->files[i], STDOUT_FILENO);
-		ft_putstr_fd("\n", STDOUT_FILENO);
+		ft_putstr_fd(files->files[i], STDERR_FILENO);
+		ft_putstr_fd("\n", STDERR_FILENO);
 	}
 }
-

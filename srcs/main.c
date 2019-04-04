@@ -1,12 +1,5 @@
 #include "../includes/ft_select.h"
 
-void	exit_program(int signum)
-{
-	(void)signum;
-	reset_term_configuration();
-	exit(-1);
-}
-
 int		main(int argc, char **argv)
 {
 	t_files	files;
@@ -21,8 +14,8 @@ int		main(int argc, char **argv)
 	signal_handler();
 	initialize_files(argv, argc, &files);
 	set_window_size();
-	key = 0;
 	update_files(&files);
+	key = 0;
 	while (key != ESC && key != ENR)
 	{
 		nbr_cols = get_nbr_cols(&files);
@@ -32,6 +25,6 @@ int		main(int argc, char **argv)
 		key = read_key();
 	}
 	reset_term_configuration();
-	//free_everything(files);*/
+	print_selected(&files);
 	return (0);
 }

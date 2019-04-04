@@ -1,6 +1,11 @@
 NAME = ft_select
 
-SRC =	./ft_select.c
+SRC =	main.c \
+		signal_handling.c \
+		print_files.c \
+		read_process_key.c \
+		initialize.c \
+		print_selected_files.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -13,7 +18,7 @@ LIB = ./libft/libft.a
 INC= -I./includes
 
 $(NAME): $(LIB)
-	@gcc $(FLAGS) $(INC) $(MINISHELL_SRCS) $(LIB) -o $(NAME);
+	@gcc $(FLAGS) $(INC) $(MINISHELL_SRCS) $(LIB) -lcurses -o $(NAME);
 	@echo compiling ft_select
 
 all: $(NAME)
