@@ -15,4 +15,5 @@ void	initialize_files(char **argv, int argc, t_files *files)
 	files->nbr_files = argc - 1;
 	files->index = 0;
 	set_values(files);
+	set_window_size();
 }

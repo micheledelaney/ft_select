@@ -39,6 +39,7 @@ typedef struct	s_files
 	int			nbr_files;
 	int			*selected;
 	int			index;
+	bool		real;
 }				t_files;
 
 // term_config.c
@@ -53,6 +54,7 @@ t_files	*update_files(t_files *updated_files);
 int		get_max_strlen(char **array, int start, int end);
 int		get_nbr_cols(t_files *files);
 void	print_filenames(t_files *files, int index, int nbr_cols);
+void	set_window_size(void);
 
 // print_selected_finish.c
 void	print_selected(t_files *files);
@@ -64,8 +66,5 @@ void	process_key(int key, int *index, int nbr_cols, t_files *files);
 // initialize.c
 void	initialize_files(char **argv, int argc, t_files *files);
 void	set_values(t_files *files);
-
-// main.c
-void	set_window_size(void);
 
 #endif

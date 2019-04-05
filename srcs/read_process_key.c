@@ -10,16 +10,22 @@ int		read_key(void)
 	return (buf);
 }
 
+void	move_down_in_array(t_files *files, int index)
+{
+	while (index < files->nbr_files + 1){
+		files->files[index] = files->files[index + 1];
+		index++;
+	}
+	files->nbr_files--;
+}
+
 void	process_key(int key, int *index, int nbr_cols, t_files *files)
 {
-	if (key == UP)
-		*index -= nbr_cols;
-	if (key == DOWN)
-		*index += nbr_cols;
-	if (key == RIGHT)
-		(*index)++;
-	if (key == LEFT)
-		(*index)--;
+	(key == UP) ? (*index -= nbr_cols) : (0);
+	(key == DOWN) ? (*index += nbr_cols) : (0);
+	(key == RIGHT) ? ((*index)++) : (0);
+	(key == LEFT) ? ((*index)--) : (0);
+	(key == 'r') ? (set_values(files)) : (0);
 	if (key == SPC)
 	{
 		if (files->selected[*index] == -1)
@@ -30,10 +36,11 @@ void	process_key(int key, int *index, int nbr_cols, t_files *files)
 		else
 			files->selected[*index] = -1;
 	}
-	if (key == 'r')
-		set_values(files);
-	if (*index >= files->nbr_files)
-		*index = 0;
-	if (*index < 0)
-		*index = files->nbr_files - 1;
+	if (((key == DEL) || (key == BCKSP)) && files->real)
+	{
+		remove(files->files[files->index]);
+		move_down_in_array(files, files->index);
+	}
+	(*index >= files->nbr_files) ? (*index = 0) : (0);
+	(*index < 0) ? (*index = files->nbr_files - 1) : (0);
 }
