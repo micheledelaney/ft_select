@@ -33,6 +33,8 @@ int			main(int argc, char **argv)
 		nbr_cols = get_nbr_cols(&files);
 		process_key(key, &files.index, nbr_cols, &files);
 		print_filenames(&files, files.index, nbr_cols);
+		if (files.files[0] == NULL)
+			break ;
 		key = read_key();
 	}
 	reset_term_configuration();

@@ -36,9 +36,9 @@ void	process_key(int key, int *index, int nbr_cols, t_files *files)
 		else
 			files->selected[*index] = -1;
 	}
-	if (((key == DEL) || (key == BCKSP)) && files->real)
+	if ((key == DEL) || (key == BCKSP))
 	{
-		remove(files->files[files->index]);
+		(files->real) ? (remove(files->files[files->index])) : (0);
 		move_down_in_array(files, files->index);
 	}
 	(*index >= files->nbr_files) ? (*index = 0) : (0);
