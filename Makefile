@@ -2,6 +2,7 @@ NAME = ft_select
 
 SRC =	main.c \
 		signal_handling.c \
+		term_config.c \
 		print_files.c \
 		read_process_key.c \
 		initialize.c \

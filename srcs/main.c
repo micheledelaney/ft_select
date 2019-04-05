@@ -25,6 +25,7 @@ int		main(int argc, char **argv)
 		key = read_key();
 	}
 	reset_term_configuration();
-	print_selected(&files);
+	(key == ENR) ? (print_selected(&files)) : (0);
+	free(files.selected);
 	return (0);
 }

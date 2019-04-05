@@ -47,6 +47,8 @@ void	print_filenames(t_files *files, int index, int nbr_cols)
 	int	max_strlen;
 
 	i = -1;
+	if ((nbr_cols * g_window_size.ws_row) < files->nbr_files)
+		return ;
 	max_strlen = get_max_strlen(files->files, 0, files->nbr_files);
 	while (files->files[++i])
 	{
@@ -59,4 +61,5 @@ void	print_filenames(t_files *files, int index, int nbr_cols)
 		ft_putstr_fd(files->files[i], STDERR_FILENO);
 		ft_putstr_fd("\n", STDERR_FILENO);
 	}
+	ft_putstr_fd(NORM, STDERR_FILENO);
 }

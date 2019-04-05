@@ -30,6 +30,8 @@ void	process_key(int key, int *index, int nbr_cols, t_files *files)
 		else
 			files->selected[*index] = -1;
 	}
+	if (key == 'r')
+		set_values(files);
 	if (*index >= files->nbr_files)
 		*index = 0;
 	if (*index < 0)
