@@ -23,14 +23,14 @@ Clone the repo and run the make command:
 `cd ft_select`  
 `make`  
 
-## Run  
+## Features  
 `./ft_select ~/*`  
-- you can navigate with up/down/right/left the arrow keys
+- you can navigate with up/down/right/left the `arrow` keys
 - hit the `space` key to select a file
 - to unselect a file just hit `space` again
 - to return with the selected files hit the `return` key
 - to dischard and leave hit `Esc`
-- the 'r' key resets all the selected files
+- the `r` key resets all the selected files
 - the screen doesn't display the files when not all the files can be displayed at once.
 - the `delete` or `backspace` keys remove an element from the list
 - in real mode with `delete` and `backspace` the files get deleted from the system it it is a valid file
