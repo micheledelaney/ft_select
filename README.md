@@ -4,8 +4,8 @@ File browser written in C that uses the termcaps library to pick files and retur
 ## Demo
 ![demo_gif]()
 
-##Installation
-###Installation for Linux
+## Installation
+### Installation for Linux
 for Ubuntu and other distros that use apt:  
 `apt-get blablabla` 
 
@@ -15,7 +15,7 @@ Arch:
 `cd ft_select`  
 `make`  
 
-###Installation for MacOS
+### Installation for MacOS
 
 ## Run  
 `./ft_select ~/*`  
