@@ -23,8 +23,7 @@ Clone the repo and run the make command:
 `cd ft_select`  
 `make`  
 
-## Features  
-`./ft_select ~/*`  
+## Features    
 - you can navigate with up/down/right/left the `arrow` keys
 - hit the `space` key to select a file
 - to unselect a file just hit `space` again
@@ -35,5 +34,11 @@ Clone the repo and run the make command:
 - the `delete` or `backspace` keys remove an element from the list
 - in real mode with `delete` and `backspace` the files get deleted from the system it it is a valid file
 
+### Run
+`./ft_select ~/*`  
+If you want to return the chosen files to the shell, for example to cat them, run it like this:  
+`cat $(./ft_select ~/*)`  
+
 ### Real mode
-You can launch the program in real mode. In real mode, when you press `delete`/`backspace` on a valid file or folder, it will be deleted on the system too. So again, watch out! I'm not responsible for any loss of your files.
+The application can get launched in real mode with the flags `-r` and `--real`. When in real mode files that get deleted from the list get also deleted from the system.
+`./ft_select --real ~/*`
