@@ -39,6 +39,39 @@ int		get_nbr_cols(t_files *files)
 	return (nbr_cols);
 }
 
+bool	ends_with(char *str, char *end)
+{
+	int i;
+	int j;
+
+	i = -1;
+	j = -1;
+	if (end == NULL || str == NULL)
+		return (false);
+	while (str[++i])
+		;
+	while (end[++j])
+		;
+	while (i >= 0 && j >= 0)
+	{
+		if (str[i] != end[j])
+			return (false);
+		i--;
+		j--;
+	}
+	if (j != -1)
+		return (false);
+	return (true);
+}
+
+void	print_color(char *file)
+{
+	(ends_with(file, ".c")) ? (ft_putstr_fd(C_COLOR, STDERR_FILENO)) : (0);
+	(ends_with(file, ".o")) ? (ft_putstr_fd(O_COLOR, STDERR_FILENO)) : (0);
+	(ends_with(file, ".h")) ? (ft_putstr_fd(H_COLOR, STDERR_FILENO)) : (0);
+}
+
+
 void	print_filenames(t_files *files, int index, int nbr_cols)
 {
 	int	i;
@@ -59,6 +92,7 @@ void	print_filenames(t_files *files, int index, int nbr_cols)
 		col = i % nbr_cols;
 		row = i / nbr_cols;
 		ft_putstr_fd(tgoto(CM, col * max_strlen, row), 0);
+		print_color(files->files[i]);
 		ft_putstr_fd(files->files[i], STDERR_FILENO);
 		ft_putstr_fd("\n", STDERR_FILENO);
 	}

@@ -11,6 +11,11 @@
 # include <curses.h>
 # include <termcap.h>
 
+# define O_COLOR				"\033[36m"
+# define H_COLOR				"\033[34m"
+# define C_COLOR				"\033[33m"
+
+
 // values of the different keys
 # define ESC 0x1B
 # define SPC 0x20
