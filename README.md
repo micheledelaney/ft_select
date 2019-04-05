@@ -1,7 +1,7 @@
 # ft_select
 File browser written in C that uses the termcaps library to pick files and returns them to the command line
 
-##Demo
+## Demo
 ![demo_gif]()
 
 ##Installation
@@ -9,7 +9,7 @@ File browser written in C that uses the termcaps library to pick files and retur
 for Ubuntu and other distros that use apt:  
 `apt-get blablabla` 
 
-Arch:
+Arch:  
 `pacman -S ncurses`  
 `git clone URL`  
 `cd ft_select`  
@@ -17,7 +17,7 @@ Arch:
 
 ###Installation for MacOS
 
-##Run
+## Run  
 `./ft_select ~/*`  
 - you can navigate with up/down/right/left the arrow keys
 - hit the space key to select a file
