@@ -23,23 +23,23 @@ static void	exit_program(int signum)
 {
 	t_files *tmp;
 
-	(void)signum;
 	tmp = NULL;
 	tmp = update_files(tmp);
 	free(tmp->selected);
 	reset_term_configuration();
-	exit(0);
+	exit(signum);
 }
 
 static void	update_window_size(int signum)
 {
-	t_files *t;
+	int		nbr_cols;
+	t_files	*t;
 
 	(void)signum;
 	t = NULL;
 	t = update_files(t);
 	set_window_size();
-	int nbr_cols = get_nbr_cols(t);
+	nbr_cols = get_nbr_cols(t);
 	ft_putstr_fd(CLEAR_SCREEN, 0);
 	print_filenames(t, t->index, nbr_cols);
 }

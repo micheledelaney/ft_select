@@ -5,9 +5,9 @@ static bool	check_realmode(t_files *files)
 	if (!(ft_strcmp(files->files[0], "-r")) || !(ft_strcmp(files->files[0], "--real")))
 	{
 		files->files = &(files->files[1]);
+		files->nbr_files--;
 		return true;
 	}
-	files->nbr_files--;
 	return false;
 }
 
