@@ -5,15 +5,22 @@
 # include <term.h>
 # include <sys/ioctl.h>
 # include <sys/types.h>
+# include <sys/stat.h>
 # include <signal.h>
 # include <fcntl.h>
 # include <time.h>
 # include <curses.h>
 # include <termcap.h>
 
-# define O_COLOR				"\033[36m"
-# define H_COLOR				"\033[34m"
-# define C_COLOR				"\033[33m"
+# define O_COLOR				"\033[34m"
+# define H_COLOR				"\033[35m"
+# define C_COLOR				"\033[36m"
+# define RESET					"\033[0m"
+# define UNDERLINED				"\033[4m"
+# define INVERSE				"\033[7m"
+# define INVALID				"\033[31m"
+# define BOLD					"\033[1m"
+# define WHITE					"\033[37m"
 
 
 // values of the different keys
@@ -28,15 +35,12 @@
 # define LEFT 0x445B1B
 
 # define CLEAR_SCREEN (tgetstr("cl", NULL))
-# define SO (tgetstr("so", NULL))
-# define SE (tgetstr("se", NULL))
 # define CM (tgetstr("cm", NULL))
 # define VE (tgetstr("ve", NULL))
 # define VI (tgetstr("vi", NULL))
 # define US (tgetstr("us", NULL))
 # define TE (tgetstr("te", NULL))
 # define TI (tgetstr("ti", NULL))
-# define NORM (tgetstr("me", NULL))
 
 typedef struct	s_files
 {

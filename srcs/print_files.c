@@ -66,11 +66,20 @@ bool	ends_with(char *str, char *end)
 
 void	print_color(char *file)
 {
+	struct stat s;
+
+	int err = stat(file, &s);
+	if (err != -1)
+	{
+		if (S_ISDIR(s.st_mode))
+			ft_putstr_fd(BOLD, STDERR_FILENO);
+	}
+	if (err == -1)
+		ft_putstr_fd(INVALID, STDERR_FILENO);
 	(ends_with(file, ".c")) ? (ft_putstr_fd(C_COLOR, STDERR_FILENO)) : (0);
 	(ends_with(file, ".o")) ? (ft_putstr_fd(O_COLOR, STDERR_FILENO)) : (0);
 	(ends_with(file, ".h")) ? (ft_putstr_fd(H_COLOR, STDERR_FILENO)) : (0);
 }
-
 
 void	print_filenames(t_files *files, int index, int nbr_cols)
 {
@@ -86,15 +95,16 @@ void	print_filenames(t_files *files, int index, int nbr_cols)
 	ft_putstr_fd(CLEAR_SCREEN, 0);
 	while (files->files[++i])
 	{
-		ft_putstr_fd(NORM, STDERR_FILENO);
-		(i == index) ? (ft_putstr_fd(US, STDERR_FILENO)) : (0);
-		(files->selected[i] != -1) ? (ft_putstr_fd(SO, STDERR_FILENO)) : (0);
+		ft_putstr_fd(RESET, STDERR_FILENO);
+		(i == index) ? (ft_putstr_fd(UNDERLINED, STDERR_FILENO)) : (0);
+		(files->selected[i] != -1) ? (ft_putstr_fd(INVERSE, STDERR_FILENO)) : (0);
 		col = i % nbr_cols;
 		row = i / nbr_cols;
 		ft_putstr_fd(tgoto(CM, col * max_strlen, row), 0);
 		print_color(files->files[i]);
 		ft_putstr_fd(files->files[i], STDERR_FILENO);
 		ft_putstr_fd("\n", STDERR_FILENO);
+		ft_putstr_fd(RESET, STDERR_FILENO);
 	}
-	ft_putstr_fd(NORM, STDERR_FILENO);
+	ft_putstr_fd(RESET, STDERR_FILENO);
 }
