@@ -2,11 +2,20 @@
 
 struct winsize	g_window_size;
 
+/*
+** the ioctl function sets the windowsize in the global struct
+** g_window_size.
+*/
 void	set_window_size(void)
 {
 	ioctl(STDERR_FILENO, TIOCGWINSZ, &g_window_size);
 }
 
+/*
+** iterates through the passed char **array and returns the strlen
+** of the longest string. the second and third variable define the
+** sub array which to iterate through.
+*/
 int		get_max_strlen(char **array, int start, int end)
 {
 	int max;
@@ -22,6 +31,11 @@ int		get_max_strlen(char **array, int start, int end)
 	return (max + 1);
 }
 
+/*
+** calculates how many columns fit into the screen based on the
+** screensize from g_window_size and the max_strlen. Every column
+** is as wide as the max_strlen.
+*/
 int		get_nbr_cols(t_files *files)
 {
 	int max_strlen;
@@ -39,6 +53,12 @@ int		get_nbr_cols(t_files *files)
 	return (nbr_cols);
 }
 
+/*
+** checks if a given string str ends with the given string end and
+** returns true if it does, false otherwise.
+** ends_with("foo.c", ".c") -> true
+** ends_with("foo.c", "foo") -> false
+*/
 bool	ends_with(char *str, char *end)
 {
 	int i;
@@ -64,6 +84,12 @@ bool	ends_with(char *str, char *end)
 	return (true);
 }
 
+/*
+** prints the colors for the files. first it checks if the filename passed
+** is a directory and if they are valid files. if so, the right color gets
+** printed. in the last part the files gets checked for its ending to
+** print the right color.
+*/
 void	print_color(char *file)
 {
 	struct stat s;
@@ -72,7 +98,7 @@ void	print_color(char *file)
 	if (err != -1)
 	{
 		if (S_ISDIR(s.st_mode))
-			ft_putstr_fd(BOLD, STDERR_FILENO);
+			ft_putstr_fd(DIR_COLOR, STDERR_FILENO);
 	}
 	if (err == -1)
 		ft_putstr_fd(INVALID, STDERR_FILENO);
@@ -81,6 +107,11 @@ void	print_color(char *file)
 	(ends_with(file, ".h")) ? (ft_putstr_fd(H_COLOR, STDERR_FILENO)) : (0);
 }
 
+/*
+** iterates through the array of files and prints them. if the file is either
+** selected or the current cursor file the right formatting gets printed.
+** goto moves to the right columns to continue printing the files.
+*/
 void	print_filenames(t_files *files, int index, int nbr_cols)
 {
 	int	i;
@@ -104,7 +135,7 @@ void	print_filenames(t_files *files, int index, int nbr_cols)
 		print_color(files->files[i]);
 		ft_putstr_fd(files->files[i], STDERR_FILENO);
 		ft_putstr_fd("\n", STDERR_FILENO);
-		ft_putstr_fd(RESET, STDERR_FILENO);
+		//ft_putstr_fd(RESET, STDERR_FILENO);
 	}
 	ft_putstr_fd(RESET, STDERR_FILENO);
 }

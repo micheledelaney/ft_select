@@ -1,5 +1,9 @@
 #include "../includes/ft_select.h"
 
+/*
+** when the user hits ctrl+z the application suspends. to do so
+** the terminal settings need to get reset.
+*/
 static void	suspend(int signum)
 {
 	(void)signum;
@@ -8,6 +12,10 @@ static void	suspend(int signum)
 	ioctl(STDERR_FILENO, TIOCSTI, "\x1A");
 }
 
+/*
+** when the user enters 'fg' the application gets restarted. the terminal
+** settings get set to canocinal again.
+*/
 static void	restart(int s)
 {
 	char		buf[2];
@@ -19,6 +27,10 @@ static void	restart(int s)
 	ioctl(0, TIOCSTI, buf);
 }
 
+/*
+** when the program exists the malloced array gets freed and the terminal
+** settings get set to normal again.
+*/
 static void	exit_program(int signum)
 {
 	t_files *tmp;
@@ -30,6 +42,11 @@ static void	exit_program(int signum)
 	exit(signum);
 }
 
+/*
+** when the user changes the window size a signal (SIGWINCH) gets sent.
+** when this occurs the screen needs to get cleared, the nbr of columns
+** recalculated and all the files printed again.
+*/
 static void	update_window_size(int signum)
 {
 	int		nbr_cols;

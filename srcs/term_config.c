@@ -13,6 +13,9 @@ t_files	*update_files(t_files *updated_files)
 	return (files);
 }
 
+/*
+** resets the terminal to its original configurations.
+*/
 void	reset_term_configuration(void)
 {
 	if (tcsetattr(STDERR_FILENO, TCSANOW, &g_term_old))
@@ -21,6 +24,10 @@ void	reset_term_configuration(void)
 	ft_putstr_fd(TE, 2);
 }
 
+/*
+** sets the terminal to canonical which means each character gets
+** read instantly, the buffer doesn't need a newline to get passed.
+*/
 void	set_term_configuration(void)
 {
 	struct termios term;

@@ -1,5 +1,8 @@
 #include "../includes/ft_select.h"
 
+/*
+** checks if realmode is on, which gets passed as argv ("-r", "--real")
+*/
 static bool	check_realmode(t_files *files)
 {
 	if (!(ft_strcmp(files->files[0], "-r")) || !(ft_strcmp(files->files[0], "--real")))

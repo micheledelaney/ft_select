@@ -1,5 +1,6 @@
 #ifndef FT_SELECT_H
 # define FT_SELECT_H
+# include <ftw.h>
 # include "../libft/includes/libft.h"
 # include <termios.h>
 # include <term.h>
@@ -11,10 +12,13 @@
 # include <time.h>
 # include <curses.h>
 # include <termcap.h>
+# include <limits.h>
+# include <dirent.h>
 
 # define O_COLOR				"\033[34m"
 # define H_COLOR				"\033[35m"
 # define C_COLOR				"\033[36m"
+# define DIR_COLOR				BOLD
 # define RESET					"\033[0m"
 # define UNDERLINED				"\033[4m"
 # define INVERSE				"\033[7m"

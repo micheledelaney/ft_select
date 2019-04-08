@@ -1,5 +1,9 @@
 #include "../includes/ft_select.h"
 
+/*
+** sets the variable selected of each file to -1 which evaluates to
+** not selected.
+*/
 void	set_values(t_files *files)
 {
 	int i;
@@ -9,6 +13,10 @@ void	set_values(t_files *files)
 		files->selected[i] = -1;
 }
 
+/*
+** the filenames passed as argv get set to files and the number of files
+** get set to argc -1.
+*/
 void	initialize_files(char **argv, int argc, t_files *files)
 {
 	files->files = &argv[1];
