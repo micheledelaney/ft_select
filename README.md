@@ -24,7 +24,7 @@ Clone the repo and run the make command:
 `make`  
 
 ## Features    
-- you can navigate with up/down/right/left the `arrow` keys
+- you can navigate with up/down/right/left `arrow` keys
 - hit the `space` key to select a file
 - to unselect a file just hit `space` again
 - to return with the selected files hit the `return` key
@@ -32,7 +32,7 @@ Clone the repo and run the make command:
 - the `r` key resets all the selected files
 - the screen doesn't display the files when not all the files can be displayed at once.
 - the `delete` or `backspace` keys remove an element from the list
-- in real mode with `delete` and `backspace` the files get deleted from the system they are valid files
+- in real mode with `delete` and `backspace` the files get deleted from disk if they are valid files
 
 ### Run
 `./ft_select ~/*`  
