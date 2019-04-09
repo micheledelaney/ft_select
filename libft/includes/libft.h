@@ -6,7 +6,7 @@
 /*   By: ccodiga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/13 09:34:16 by ccodiga           #+#    #+#             */
-/*   Updated: 2019/01/15 14:14:30 by ccodiga          ###   ########.fr       */
+/*   Updated: 2019/04/09 13:43:31 by michele          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,5 @@ void				print_binary_string(char *message, int len);
 char				*hold_and_free(char *old, char *addition);
 char				**ft_strsplit_whitespace(char const *s);
 int					ft_strchr_index(const char *s, int c);
-
 
 #endif

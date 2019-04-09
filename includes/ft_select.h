@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_select.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: michele <cmicheledelaney@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/09 13:41:06 by michele           #+#    #+#             */
+/*   Updated: 2019/04/09 13:41:22 by michele          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_SELECT_H
 # define FT_SELECT_H
 # include "../libft/includes/libft.h"
@@ -14,19 +26,18 @@
 # include <limits.h>
 # include <dirent.h>
 
-# define O_COLOR				"\033[34m"
-# define H_COLOR				"\033[35m"
-# define C_COLOR				"\033[36m"
-# define DIR_COLOR				BOLD
-# define RESET					"\033[0m"
-# define UNDERLINED				"\033[4m"
-# define INVERSE				"\033[7m"
-# define INVALID				"\033[31m"
-# define BOLD					"\033[1m"
-# define WHITE					"\033[37m"
+# define RESET		"\033[0m"
+# define UNDERLINED	"\033[4m"
+# define INVERSE	"\033[7m"
+# define INVALID	"\033[31m"
+# define BOLD		"\033[1m"
+# define WHITE		"\033[37m"
+# define DIR_COLOR	BOLD
 
+/*
+** values of the different keys
+*/
 
-// values of the different keys
 # define ESC 0x1B
 # define SPC 0x20
 # define ENR 0xA
@@ -54,29 +65,41 @@ typedef struct	s_files
 	bool		real;
 }				t_files;
 
-// term_config.c
-void	set_term_configuration(void);
-void	reset_term_configuration(void);
+/*
+** term_config.c
+*/
+void			set_term_configuration(void);
+void			reset_term_configuration(void);
 
-// signal_handling.c
-void	signal_handler(void);
-t_files	*update_files(t_files *updated_files);
+/*
+** signal_handling.c
+*/
+void			signal_handler(void);
+t_files			*update_files(t_files *updated_files);
 
-// print_files.c
-int		get_max_strlen(char **array, int start, int end);
-int		get_nbr_cols(t_files *files);
-void	print_filenames(t_files *files, int index, int nbr_cols);
-void	set_window_size(void);
+/*
+** print_files.c
+*/
+int				get_max_strlen(char **array);
+int				get_nbr_cols(t_files *files);
+void			print_filenames(t_files *files, int index, int nbr_cols);
+void			set_window_size(void);
 
-// print_selected_finish.c
-void	print_selected(t_files *files);
+/*
+** print_selected_finish.c
+*/
+void			print_selected(t_files *files);
 
-// read_process_key.c
-int		read_key(void);
-void	process_key(int key, int *index, int nbr_cols, t_files *files);
+/*
+** read_process_key.c
+*/
+int				read_key(void);
+void			process_key(int key, int *index, int nbr_cols, t_files *files);
 
-// initialize.c
-void	initialize_files(char **argv, int argc, t_files *files);
-void	set_values(t_files *files);
+/*
+**  initialize.c
+*/
+void			initialize_files(char **argv, int argc, t_files *files);
+void			set_values(t_files *files);
 
 #endif

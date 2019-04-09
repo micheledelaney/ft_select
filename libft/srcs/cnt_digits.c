@@ -6,7 +6,7 @@
 /*   By: ccodiga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 16:54:55 by ccodiga           #+#    #+#             */
-/*   Updated: 2018/12/05 16:55:12 by ccodiga          ###   ########.fr       */
+/*   Updated: 2019/04/09 13:42:35 by michele          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 ** counts how many places a number has in a given base. the decimal value 1000
 ** converted in hex would return 3 (for '3e8').
-**/
+*/
 
 int		cnt_digits(long long i, char *base)
 {

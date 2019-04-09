@@ -6,7 +6,7 @@
 /*   By: michele <cmicheledelaney@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 11:54:24 by michele           #+#    #+#             */
-/*   Updated: 2019/04/09 11:58:27 by michele          ###   ########.fr       */
+/*   Updated: 2019/04/09 13:34:09 by michele          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,17 @@ void	set_window_size(void)
 ** sub array which to iterate through.
 */
 
-int		get_max_strlen(char **array, int start, int end)
+int		get_max_strlen(char **array)
 {
-	int max;
-	int len;
+	int	max;
+	int	len;
+	int	i;
 
-	start--;
 	max = 0;
-	while (++start < end && array[start])
+	i = -1;
+	while (array[++i])
 	{
-		len = ft_strlen(array[start]);
+		len = ft_strlen(array[i]);
 		max = (len > max) ? (len) : (max);
 	}
 	return (max + 1);
@@ -58,7 +59,7 @@ int		get_nbr_cols(t_files *files)
 	int width;
 
 	nbr_cols = 0;
-	max_strlen = get_max_strlen(files->files, 0, files->nbr_files);
+	max_strlen = get_max_strlen(files->files);
 	width = max_strlen;
 	while (width <= g_window_size.ws_col)
 	{
@@ -66,38 +67,6 @@ int		get_nbr_cols(t_files *files)
 		nbr_cols++;
 	}
 	return (nbr_cols);
-}
-
-/*
-** checks if a given string str ends with the given string end and
-** returns true if it does, false otherwise.
-** ends_with("foo.c", ".c") -> true
-** ends_with("foo.c", "foo") -> false
-*/
-
-bool	ends_with(char *str, char *end)
-{
-	int i;
-	int j;
-
-	i = -1;
-	j = -1;
-	if (end == NULL || str == NULL)
-		return (false);
-	while (str[++i])
-		;
-	while (end[++j])
-		;
-	while (i >= 0 && j >= 0)
-	{
-		if (str[i] != end[j])
-			return (false);
-		i--;
-		j--;
-	}
-	if (j != -1)
-		return (false);
-	return (true);
 }
 
 /*
@@ -120,9 +89,6 @@ void	print_color(char *file)
 	}
 	if (err == -1)
 		ft_putstr_fd(INVALID, STDERR_FILENO);
-	(ends_with(file, ".c")) ? (ft_putstr_fd(C_COLOR, STDERR_FILENO)) : (0);
-	(ends_with(file, ".o")) ? (ft_putstr_fd(O_COLOR, STDERR_FILENO)) : (0);
-	(ends_with(file, ".h")) ? (ft_putstr_fd(H_COLOR, STDERR_FILENO)) : (0);
 }
 
 /*
@@ -141,13 +107,14 @@ void	print_filenames(t_files *files, int index, int nbr_cols)
 	i = -1;
 	if ((nbr_cols * g_window_size.ws_row) < files->nbr_files)
 		return ;
-	max_strlen = get_max_strlen(files->files, 0, files->nbr_files);
+	max_strlen = get_max_strlen(files->files);
 	ft_putstr_fd(CLEAR_SCREEN, 0);
 	while (files->files[++i])
 	{
 		ft_putstr_fd(RESET, STDERR_FILENO);
 		(i == index) ? (ft_putstr_fd(UNDERLINED, STDERR_FILENO)) : (0);
-		(files->selected[i] != -1) ? (ft_putstr_fd(INVERSE, STDERR_FILENO)) : (0);
+		if (files->selected[i] != -1)
+			ft_putstr_fd(INVERSE, STDERR_FILENO);
 		col = i % nbr_cols;
 		row = i / nbr_cols;
 		ft_putstr_fd(tgoto(CM, col * max_strlen, row), 0);

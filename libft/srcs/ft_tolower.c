@@ -6,7 +6,7 @@
 /*   By: ccodiga <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 14:14:29 by ccodiga           #+#    #+#             */
-/*   Updated: 2018/09/17 11:23:18 by ccodiga          ###   ########.fr       */
+/*   Updated: 2019/04/09 13:42:49 by michele          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 ** if the given character is not a uppercase letter it just returns the
 ** passed argument.
 */
-
 
 int	ft_tolower(int c)
 {
