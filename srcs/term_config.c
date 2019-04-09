@@ -6,7 +6,7 @@
 /*   By: michele <cmicheledelaney@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 11:55:06 by michele           #+#    #+#             */
-/*   Updated: 2019/04/09 11:55:21 by michele          ###   ########.fr       */
+/*   Updated: 2019/04/09 13:35:43 by michele          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,12 @@ void	reset_term_configuration(void)
 
 void	set_term_configuration(void)
 {
-	struct termios term;
+	struct termios	term;
 
 	if (!getenv("TERM"))
 		exit(-1);
 	if (tgetent(NULL, getenv("TERM")) <= 0)
 		exit(-1);
-	//if ((0 = open(ttyname(0), O_RDWR | O_NDELAY)) < 0)
-	//	exit(-1);
 	tcgetattr(STDERR_FILENO, &g_term_old);
 	tcgetattr(STDERR_FILENO, &term);
 	term.c_lflag &= ~(ICANON | ECHO);
