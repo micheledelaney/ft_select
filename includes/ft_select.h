@@ -1,6 +1,5 @@
 #ifndef FT_SELECT_H
 # define FT_SELECT_H
-# include <ftw.h>
 # include "../libft/includes/libft.h"
 # include <termios.h>
 # include <term.h>

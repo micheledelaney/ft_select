@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_files.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: michele <cmicheledelaney@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/09 11:54:24 by michele           #+#    #+#             */
+/*   Updated: 2019/04/09 11:58:27 by michele          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/ft_select.h"
 
 struct winsize	g_window_size;
@@ -6,6 +18,7 @@ struct winsize	g_window_size;
 ** the ioctl function sets the windowsize in the global struct
 ** g_window_size.
 */
+
 void	set_window_size(void)
 {
 	ioctl(STDERR_FILENO, TIOCGWINSZ, &g_window_size);
@@ -16,6 +29,7 @@ void	set_window_size(void)
 ** of the longest string. the second and third variable define the
 ** sub array which to iterate through.
 */
+
 int		get_max_strlen(char **array, int start, int end)
 {
 	int max;
@@ -36,6 +50,7 @@ int		get_max_strlen(char **array, int start, int end)
 ** screensize from g_window_size and the max_strlen. Every column
 ** is as wide as the max_strlen.
 */
+
 int		get_nbr_cols(t_files *files)
 {
 	int max_strlen;
@@ -59,6 +74,7 @@ int		get_nbr_cols(t_files *files)
 ** ends_with("foo.c", ".c") -> true
 ** ends_with("foo.c", "foo") -> false
 */
+
 bool	ends_with(char *str, char *end)
 {
 	int i;
@@ -90,11 +106,13 @@ bool	ends_with(char *str, char *end)
 ** printed. in the last part the files gets checked for its ending to
 ** print the right color.
 */
+
 void	print_color(char *file)
 {
-	struct stat s;
+	struct stat	s;
+	int			err;
 
-	int err = stat(file, &s);
+	err = stat(file, &s);
 	if (err != -1)
 	{
 		if (S_ISDIR(s.st_mode))
@@ -112,6 +130,7 @@ void	print_color(char *file)
 ** selected or the current cursor file the right formatting gets printed.
 ** goto moves to the right columns to continue printing the files.
 */
+
 void	print_filenames(t_files *files, int index, int nbr_cols)
 {
 	int	i;
@@ -135,7 +154,6 @@ void	print_filenames(t_files *files, int index, int nbr_cols)
 		print_color(files->files[i]);
 		ft_putstr_fd(files->files[i], STDERR_FILENO);
 		ft_putstr_fd("\n", STDERR_FILENO);
-		//ft_putstr_fd(RESET, STDERR_FILENO);
 	}
 	ft_putstr_fd(RESET, STDERR_FILENO);
 }

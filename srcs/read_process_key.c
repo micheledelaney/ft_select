@@ -1,15 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_process_key.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: michele <cmicheledelaney@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/09 11:53:27 by michele           #+#    #+#             */
+/*   Updated: 2019/04/09 11:54:53 by michele          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/ft_select.h"
 
 /*
 ** reads the key hit by the user into an 32 bit int and returns that int.
 */
+
 int		read_key(void)
 {
 	int	buf;
 
 	buf = 0;
 	if (read(STDERR_FILENO, &buf, 8) < 0)
-		perror ("read()");
+		perror("read()");
 	return (buf);
 }
 
@@ -17,9 +30,11 @@ int		read_key(void)
 ** moves the elements in the array one down starting at index.
 ** does not free!
 */
+
 void	move_down_in_array(t_files *files, int index)
 {
-	while (index < files->nbr_files + 1){
+	while (index < files->nbr_files + 1)
+	{
 		files->files[index] = files->files[index + 1];
 		index++;
 	}
@@ -27,10 +42,11 @@ void	move_down_in_array(t_files *files, int index)
 }
 
 /*
-** removes the passed file from disk if it is an existent file. if it 
+** removes the passed file from disk if it is an existent file. if it
 ** is a directory it removes its content recursively and removes the
 ** directory itself.
 */
+
 void	remove_it(const char *path)
 {
 	struct stat		s;
@@ -66,6 +82,7 @@ void	remove_it(const char *path)
 ** changes its value. if in real mode and the key is DEL the remove_it function
 ** gets called.
 */
+
 void	process_key(int key, int *index, int nbr_cols, t_files *files)
 {
 	(key == UP) ? (*index -= nbr_cols) : (0);

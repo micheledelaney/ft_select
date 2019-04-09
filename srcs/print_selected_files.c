@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_selected_files.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: michele <cmicheledelaney@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/09 11:54:34 by michele           #+#    #+#             */
+/*   Updated: 2019/04/09 12:03:09 by michele          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/ft_select.h"
 
 void	print_selected(t_files *files)
@@ -17,5 +29,4 @@ void	print_selected(t_files *files)
 		}
 	}
 	(printed == true) ? (ft_putstr_fd("\n", STDOUT_FILENO)) : (0);
-	free(files->selected);
 }

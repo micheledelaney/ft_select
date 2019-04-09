@@ -1,9 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   signal_handling.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: michele <cmicheledelaney@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/09 11:54:44 by michele           #+#    #+#             */
+/*   Updated: 2019/04/09 11:54:46 by michele          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/ft_select.h"
 
 /*
 ** when the user hits ctrl+z the application suspends. to do so
 ** the terminal settings need to get reset.
 */
+
 static void	suspend(int signum)
 {
 	(void)signum;
@@ -16,6 +29,7 @@ static void	suspend(int signum)
 ** when the user enters 'fg' the application gets restarted. the terminal
 ** settings get set to canocinal again.
 */
+
 static void	restart(int s)
 {
 	char		buf[2];
@@ -31,6 +45,7 @@ static void	restart(int s)
 ** when the program exists the malloced array gets freed and the terminal
 ** settings get set to normal again.
 */
+
 static void	exit_program(int signum)
 {
 	t_files *tmp;
@@ -47,6 +62,7 @@ static void	exit_program(int signum)
 ** when this occurs the screen needs to get cleared, the nbr of columns
 ** recalculated and all the files printed again.
 */
+
 static void	update_window_size(int signum)
 {
 	int		nbr_cols;
@@ -61,7 +77,7 @@ static void	update_window_size(int signum)
 	print_filenames(t, t->index, nbr_cols);
 }
 
-void	signal_handler(void)
+void		signal_handler(void)
 {
 	signal(SIGWINCH, update_window_size);
 	signal(SIGTSTP, suspend);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   term_config.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: michele <cmicheledelaney@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/09 11:55:06 by michele           #+#    #+#             */
+/*   Updated: 2019/04/09 11:55:21 by michele          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/ft_select.h"
 
 struct winsize	g_window_size;
@@ -16,6 +28,7 @@ t_files	*update_files(t_files *updated_files)
 /*
 ** resets the terminal to its original configurations.
 */
+
 void	reset_term_configuration(void)
 {
 	if (tcsetattr(STDERR_FILENO, TCSANOW, &g_term_old))
@@ -28,6 +41,7 @@ void	reset_term_configuration(void)
 ** sets the terminal to canonical which means each character gets
 ** read instantly, the buffer doesn't need a newline to get passed.
 */
+
 void	set_term_configuration(void)
 {
 	struct termios term;
