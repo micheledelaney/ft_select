@@ -19,7 +19,7 @@ LIB = ./libft/libft.a
 INC= -I./includes
 
 $(NAME): $(LIB)
-	@gcc $(FLAGS) $(INC) $(MINISHELL_SRCS) $(LIB) -lcurses -o $(NAME);
+	@gcc $(FLAGS) $(INC) $(MINISHELL_SRCS) $(LIB) -ltermcap -o $(NAME);
 	@echo compiling ft_select
 
 all: $(NAME)

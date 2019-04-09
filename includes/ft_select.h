@@ -6,13 +6,15 @@
 /*   By: michele <cmicheledelaney@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 13:41:06 by michele           #+#    #+#             */
-/*   Updated: 2019/04/09 13:41:22 by michele          ###   ########.fr       */
+/*   Updated: 2019/04/09 13:56:37 by michele          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_SELECT_H
 # define FT_SELECT_H
 # include "../libft/includes/libft.h"
+# include <stdio.h>
+# include <stdbool.h>
 # include <termios.h>
 # include <term.h>
 # include <sys/ioctl.h>
@@ -21,7 +23,6 @@
 # include <signal.h>
 # include <fcntl.h>
 # include <time.h>
-# include <curses.h>
 # include <termcap.h>
 # include <limits.h>
 # include <dirent.h>
