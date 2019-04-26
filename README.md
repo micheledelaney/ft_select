@@ -2,7 +2,7 @@
 File browser written in C that uses the termcaps library to pick files and returns them to the command line
 
 ## Demo
-![demo_gif]()
+![demo_gif](https://github.com/cmicheledelaney/ft_select/blob/master/demo_ft_select.gif)  
 
 ## Installation  
 ### Requirements  
