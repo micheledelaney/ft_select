@@ -6,7 +6,7 @@
 /*   By: michele <cmicheledelaney@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 11:54:12 by michele           #+#    #+#             */
-/*   Updated: 2019/04/09 13:32:21 by michele          ###   ########.fr       */
+/*   Updated: 2019/04/26 10:50:41 by michele          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static bool	check_input(int argc, char **argv)
 	bool real;
 
 	real = false;
-	if (!(ft_strcmp(argv[1], "-r")) ||
-			!(ft_strcmp(argv[1], "--real")))
+	if (argc > 1 && (!(ft_strcmp(argv[1], "-r")) ||
+			!(ft_strcmp(argv[1], "--real"))))
 		real = true;
 	if (argc < 2 || (argc == 2 && real))
 	{
