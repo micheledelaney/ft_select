@@ -6,7 +6,7 @@
 /*   By: michele <cmicheledelaney@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:40:23 by michele           #+#    #+#             */
-/*   Updated: 2019/04/26 12:40:28 by michele          ###   ########.fr       */
+/*   Updated: 2019/04/26 15:37:04 by michele          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@
 
 int	ft_putchar_int(int c)
 {
-	return (write(1, &c, 1));
+	return (write(STDERR_FILENO, &c, 1));
 }
