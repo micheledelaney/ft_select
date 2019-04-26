@@ -6,7 +6,8 @@ SRC =	main.c \
 		print_files.c \
 		read_process_key.c \
 		initialize.c \
-		print_selected_files.c
+		print_selected_files.c \
+		ft_putchar_int.c
 
 OBJ = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: michele <cmicheledelaney@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 11:54:44 by michele           #+#    #+#             */
-/*   Updated: 2019/04/09 11:54:46 by michele          ###   ########.fr       */
+/*   Updated: 2019/04/26 12:44:39 by michele          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static void	update_window_size(int signum)
 	t = update_files(t);
 	set_window_size();
 	nbr_cols = get_nbr_cols(t);
-	ft_putstr_fd(CLEAR_SCREEN, 0);
+	tputs(CLEAR_SCREEN, 1, &ft_putchar_int);
 	print_filenames(t, t->index, nbr_cols);
 }
 

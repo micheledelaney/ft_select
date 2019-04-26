@@ -6,7 +6,7 @@
 /*   By: michele <cmicheledelaney@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 11:55:06 by michele           #+#    #+#             */
-/*   Updated: 2019/04/09 13:35:43 by michele          ###   ########.fr       */
+/*   Updated: 2019/04/26 12:42:58 by michele          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	reset_term_configuration(void)
 {
 	if (tcsetattr(STDERR_FILENO, TCSANOW, &g_term_old))
 		exit(0);
-	ft_putstr_fd(VE, 2);
-	ft_putstr_fd(TE, 2);
+	tputs(VE, 1, &ft_putchar_int);
+	tputs(TE, 1, &ft_putchar_int);
 }
 
 /*
@@ -56,6 +56,6 @@ void	set_term_configuration(void)
 	term.c_cc[VMIN] = 1;
 	term.c_cc[VTIME] = 0;
 	tcsetattr(STDERR_FILENO, TCSANOW, &term);
-	ft_putstr_fd(TI, 2);
-	ft_putstr_fd(VI, 2);
+	tputs(TI, 1, &ft_putchar_int);
+	tputs(VI, 1, &ft_putchar_int);
 }

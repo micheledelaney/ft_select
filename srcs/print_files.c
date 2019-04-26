@@ -6,7 +6,7 @@
 /*   By: michele <cmicheledelaney@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 11:54:24 by michele           #+#    #+#             */
-/*   Updated: 2019/04/09 13:34:09 by michele          ###   ########.fr       */
+/*   Updated: 2019/04/26 12:39:19 by michele          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,10 @@ void	print_color(char *file)
 	if (err != -1)
 	{
 		if (S_ISDIR(s.st_mode))
-			ft_putstr_fd(DIR_COLOR, STDERR_FILENO);
+			tputs(DIR_COLOR, 1, &ft_putchar_int);
 	}
 	if (err == -1)
-		ft_putstr_fd(INVALID, STDERR_FILENO);
+		tputs(INVALID, 1, &ft_putchar_int);
 }
 
 /*
@@ -108,19 +108,19 @@ void	print_filenames(t_files *files, int index, int nbr_cols)
 	if ((nbr_cols * g_window_size.ws_row) < files->nbr_files)
 		return ;
 	max_strlen = get_max_strlen(files->files);
-	ft_putstr_fd(CLEAR_SCREEN, 0);
+	tputs(CLEAR_SCREEN, 1, &ft_putchar_int);
 	while (files->files[++i])
 	{
-		ft_putstr_fd(RESET, STDERR_FILENO);
-		(i == index) ? (ft_putstr_fd(UNDERLINED, STDERR_FILENO)) : (0);
+		tputs(RESET, 1, &ft_putchar_int);
+		(i == index) ? (tputs(UNDERLINED, 1, &ft_putchar_int)) : (0);
 		if (files->selected[i] != -1)
-			ft_putstr_fd(INVERSE, STDERR_FILENO);
+			tputs(INVERSE, 1, &ft_putchar_int);
 		col = i % nbr_cols;
 		row = i / nbr_cols;
-		ft_putstr_fd(tgoto(CM, col * max_strlen, row), 0);
+		tputs(tgoto(CM, col * max_strlen, row), 1, &ft_putchar_int);
 		print_color(files->files[i]);
-		ft_putstr_fd(files->files[i], STDERR_FILENO);
-		ft_putstr_fd("\n", STDERR_FILENO);
+		tputs(files->files[i], 1, &ft_putchar_int);
+		tputs("\n", 1, &ft_putchar_int);
 	}
-	ft_putstr_fd(RESET, STDERR_FILENO);
+	tputs(RESET, 1, &ft_putchar_int);
 }

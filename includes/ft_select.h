@@ -6,7 +6,7 @@
 /*   By: michele <cmicheledelaney@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 09:25:00 by michele           #+#    #+#             */
-/*   Updated: 2019/04/11 09:25:26 by michele          ###   ########.fr       */
+/*   Updated: 2019/04/26 12:55:28 by michele          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,11 @@
 # include <limits.h>
 # include <dirent.h>
 
-# define RESET		"\033[0m"
-# define UNDERLINED	"\033[4m"
-# define INVERSE	"\033[7m"
+# define RESET		(tgetstr("me", NULL))
+# define UNDERLINED	(tgetstr("us", NULL))
+# define INVERSE	(tgetstr("mr", NULL))
 # define INVALID	"\033[31m"
-# define BOLD		"\033[1m"
-# define WHITE		"\033[37m"
+# define BOLD		(tgetstr("md", NULL))
 # define DIR_COLOR	BOLD
 
 /*
@@ -102,5 +101,10 @@ void			process_key(int key, int *index, int nbr_cols, t_files *files);
 */
 void			initialize_files(char **argv, int argc, t_files *files);
 void			set_values(t_files *files);
+
+/*
+** ft_putchar_int.c
+*/
+int				ft_putchar_int(int c);
 
 #endif
