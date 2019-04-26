@@ -33,6 +33,7 @@ Clone the repo and run the make command:
 - the screen doesn't display the files when not all the files can be displayed at once.
 - the `delete` or `backspace` keys remove an element from the list
 - in real mode with `delete` and `backspace` the files get deleted from disk if they are valid files
+- files that do not exist are displayed in red
 
 ### Run
 `./ft_select ~/*`  
