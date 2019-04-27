@@ -1,3 +1,5 @@
+MACHINE := $(shell uname)
+
 NAME = ft_select
 
 SRC =	main.c \
@@ -15,17 +17,24 @@ FLAGS = -Wall -Wextra -Werror
 
 MINISHELL_SRCS = $(addprefix srcs/,$(SRC))
 
-LIB = ./libft/libft.a
+LIBFT = ./libft/libft.a
+
+ifeq ($(MACHINE), Linux)
+LIBS = -lcurses
+endif
+ifeq ($(MACHINE), Darwin)
+LIBS = -ltermcap
+endif
 
 INC= -I./includes
 
-$(NAME): $(LIB)
-	@gcc $(FLAGS) $(INC) $(MINISHELL_SRCS) $(LIB) -ltermcap -o $(NAME);
+$(NAME): $(LIBFT)
+	@gcc $(FLAGS) $(INC) $(MINISHELL_SRCS) $(LIBFT) $(LIBS) -o $(NAME);
 	@echo compiling ft_select
 
 all: $(NAME)
 
-$(LIB):
+$(LIBFT):
 	@make -C libft/
 
 clean:
