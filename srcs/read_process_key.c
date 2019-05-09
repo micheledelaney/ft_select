@@ -36,6 +36,7 @@ void	move_down_in_array(t_files *files, int index)
 	while (index < files->nbr_files + 1)
 	{
 		files->files[index] = files->files[index + 1];
+		files->selected[index] = files->selected[index + 1]; 
 		index++;
 	}
 	files->nbr_files--;
